@@ -5,7 +5,7 @@
   systemd:
     name: kibana
     state: started
-    enabled: {{ kibana_enabled_on_boot }}
+    enabled: "{{ kibana_enabled_on_boot }}"
     daemon_reload: yes
 
 - name: Copy Kibana configuration.

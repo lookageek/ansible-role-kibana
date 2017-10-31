@@ -31,6 +31,19 @@ The FQDN or IP address and port Kibana should use.
 
 The URL (including port) over which Kibana will connect to Elasticsearch.
 
+  kibana_xpack_enabled: true
+  kibana_xpack_graph_enabled: false
+  kibana_xpack_monitoring_enabled: true
+  kibana_xpack_reporting_enabled: false
+  kibana_xpack_security_enabled: true
+
+X-Pack settings for Kibana when it is being used in a role of log collection.
+
+  kibana_login_username: kibs
+  kibana_login_password: passw0rd
+
+When `kibana_xpack_security_enabled` is `true`, set username / password for kibana login.
+
 ## Dependencies
 
 None.

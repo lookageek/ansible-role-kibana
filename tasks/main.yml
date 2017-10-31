@@ -8,6 +8,12 @@
     enabled: "{{ kibana_enabled_on_boot }}"
     daemon_reload: yes
 
+- name: Install X-Pack.
+  become: true
+  command: /usr/share/kibana/bin/kibana-plugin install x-pack
+  when: kibana_xpack_enabled
+  notify: restart kibana
+
 - name: Copy Kibana configuration.
   template:
     src: kibana.yml.j2

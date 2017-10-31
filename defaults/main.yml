@@ -8,3 +8,12 @@ kibana_server_port: 5601
 kibana_server_host: "0.0.0.0"
 
 kibana_elasticsearch_url: "http://localhost:9200"
+
+kibana_xpack_enabled: true
+kibana_xpack_graph_enabled: false
+kibana_xpack_monitoring_enabled: true
+kibana_xpack_reporting_enabled: false
+kibana_xpack_security_enabled: true
+
+kibana_login_username: kibs
+kibana_login_password: passw0rd

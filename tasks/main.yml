@@ -8,6 +8,19 @@
     enabled: "{{ kibana_enabled_on_boot }}"
     daemon_reload: yes
 
+- name: Check if X-Pack installed.
+  stat:
+    path: /usr/share/kibana/plugins/x-pack
+  register: xpack_dir
+  when: kibana_xpack_enabled
+
+- name: Remove installed X-Pack.
+  become: true
+  command: /usr/share/kibana/bin/kibana-plugin remove x-pack
+  when:
+    - kibana_xpack_enabled
+    - xpack_dir.stat.exists
+
 - name: Install X-Pack.
   become: true
   command: /usr/share/kibana/bin/kibana-plugin install x-pack

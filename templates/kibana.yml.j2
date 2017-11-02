@@ -84,14 +84,6 @@ elasticsearch.url: {{ kibana_elasticsearch_url }}
 
 {% if kibana_xpack_enabled %}
 # X-Pack Settings
-xpack.graph.enabled: {{ kibana_xpack_graph_enabled }}
-xpack.ml.enabled: false
 xpack.monitoring.enabled: {{ kibana_xpack_monitoring_enabled }}
-xpack.reporting.enabled: {{ kibana_xpack_reporting_enabled }}
 xpack.security.enabled: {{ kibana_xpack_security_enabled }}
-{% if kibana_xpack_security_enabled %}
-xpack.security.useDefaultEsCredentials: false
-elasticsearch.username: {{ kibana_login_username }}
-elasticsearch.password: {{ kibana_login_password }}
-{% endif %}
 {% endif %}

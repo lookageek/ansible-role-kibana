@@ -1,23 +1,36 @@
 ---
-- include: setup-RedHat.yml
-  when: ansible_os_family == 'RedHat'
-
-- include: setup-Debian.yml
-  when: ansible_os_family == 'Debian'
-
-- name: Install Kibana.
-  package: name=kibana state=present
+- include: setup.yml
 
 - name: Ensure Kibana is started and enabled at boot.
-  service:
+  systemd:
     name: kibana
     state: started
-    enabled: yes
+    enabled: "{{ kibana_enabled_on_boot }}"
+    daemon_reload: yes
+
+- name: Check if X-Pack installed.
+  stat:
+    path: /usr/share/kibana/plugins/x-pack
+  register: xpack_dir
+  when: kibana_xpack_enabled
+
+- name: Remove installed X-Pack.
+  become: true
+  command: /usr/share/kibana/bin/kibana-plugin remove x-pack
+  when:
+    - kibana_xpack_enabled
+    - xpack_dir.stat.exists
+
+- name: Install X-Pack.
+  become: true
+  command: /usr/share/kibana/bin/kibana-plugin install x-pack
+  when: kibana_xpack_enabled
+  notify: restart kibana
 
 - name: Copy Kibana configuration.
   template:
     src: kibana.yml.j2
-    dest: "/opt/kibana/config/kibana.yml"
+    dest: /etc/kibana/kibana.yml
     owner: root
     group: root
     mode: 0644

@@ -1,8 +1,6 @@
 # Ansible Role: Kibana
 
-[![Build Status](https://travis-ci.org/geerlingguy/ansible-role-kibana.svg?branch=master)](https://travis-ci.org/geerlingguy/ansible-role-kibana)
-
-An Ansible Role that installs Kibana on RedHat/CentOS or Debian/Ubuntu.
+An Ansible Role that installs Kibana on Debian/Ubuntu with systemd.
 
 ## Requirements
 
@@ -12,9 +10,17 @@ None.
 
 Available variables are listed below, along with default values (see `defaults/main.yml`):
 
-    kibana_version: "4.6"
+    elasticstack_deb_repo: "5.x"
 
-The version of kibana to install (major and minor only).
+The elasticstack debian repo version
+
+    kibana_version: "5.3.2"
+
+Specific kibana version to install
+
+    kibana_enabled_on_boot: yes
+
+Set this to `no` if you don't want kibana to run on system startup.
 
     kibana_server_port: 5601
     kibana_server_host: "0.0.0.0"
@@ -25,15 +31,15 @@ The FQDN or IP address and port Kibana should use.
 
 The URL (including port) over which Kibana will connect to Elasticsearch.
 
+  kibana_xpack_enabled: true
+  kibana_xpack_monitoring_enabled: "true"
+  kibana_xpack_security_enabled: "true"
+
+X-Pack settings for Kibana when it is being used in a role of log collection.
+
 ## Dependencies
 
 None.
-
-## Example Playbook
-
-    - hosts: kibana
-      roles:
-        - geerlingguy.kibana
 
 ## License
 
@@ -41,4 +47,4 @@ MIT / BSD
 
 ## Author Information
 
-This role was created in 2014 by [Jeff Geerling](https://www.jeffgeerling.com/), author of [Ansible for DevOps](https://www.ansiblefordevops.com/).
+This role was created in 2017 by Jayanth Manklu cloning from [geerlingguy/ansible-role-kibana](https://github.com/geerlingguy/ansible-role-kibana).

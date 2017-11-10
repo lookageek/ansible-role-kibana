@@ -81,3 +81,9 @@ elasticsearch.url: {{ kibana_elasticsearch_url }}
 
 # Set this to true to log all events, including system usage information and all requests.
 # logging.verbose: false
+
+{% if kibana_xpack_enabled %}
+# X-Pack Settings
+xpack.monitoring.enabled: {{ kibana_xpack_monitoring_enabled }}
+xpack.security.enabled: {{ kibana_xpack_security_enabled }}
+{% endif %}

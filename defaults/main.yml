@@ -1,6 +1,6 @@
 ---
 elasticstack_deb_repo: "5.x"
-kibana_version: "5.3.2"
+kibana_version: "5.6.4"
 
 kibana_enabled_on_boot: yes
 
@@ -10,5 +10,9 @@ kibana_server_host: "0.0.0.0"
 kibana_elasticsearch_url: "http://localhost:9200"
 
 kibana_xpack_enabled: true
+kibana_xpack_grokdebugger_enabled: "false"
+kibana_xpack_graph_enabled: "false"
+kibana_xpack_ml_enabled: "false"
 kibana_xpack_monitoring_enabled: "true"
+kibana_xpack_reporting_enabled: "false"
 kibana_xpack_security_enabled: "true"

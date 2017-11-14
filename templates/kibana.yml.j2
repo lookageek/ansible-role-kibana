@@ -84,6 +84,10 @@ elasticsearch.url: {{ kibana_elasticsearch_url }}
 
 {% if kibana_xpack_enabled %}
 # X-Pack Settings
+xpack.grokdebugger.enabled: {{ kibana_xpack_grokdebugger_enabled }}
+xpack.graph.enabled: {{ kibana_xpack_graph_enabled }}
+xpack.ml.enabled: {{ kibana_xpack_ml_enabled }}
 xpack.monitoring.enabled: {{ kibana_xpack_monitoring_enabled }}
+xpack.reporting.enabled: {{ kibana_xpack_reporting_enabled }}
 xpack.security.enabled: {{ kibana_xpack_security_enabled }}
 {% endif %}

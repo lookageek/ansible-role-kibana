@@ -1,6 +1,6 @@
 ---
-elasticstack_deb_repo: "5.x"
-kibana_version: "5.6.4"
+elasticstack_deb_repo: "6.x"
+kibana_version: "6.1.2"
 
 kibana_enabled_on_boot: yes
 
@@ -15,4 +15,4 @@ kibana_xpack_graph_enabled: "false"
 kibana_xpack_ml_enabled: "false"
 kibana_xpack_monitoring_enabled: "true"
 kibana_xpack_reporting_enabled: "false"
-kibana_xpack_security_enabled: "true"
+kibana_xpack_security_enabled: "false"
